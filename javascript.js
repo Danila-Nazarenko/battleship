@@ -65,6 +65,8 @@ var controller ={
             firstChar = guess.charAt(0);
             var row = alphabet.indexOf(firstChar);
             var column = guess.charAt(1);
+
+
             if (isNaN(row)||isNaN(column)) {
                 alert("Oops, thst isn't on the board")
             }else if (row<0 || row>=model.boardSize|| column<0 || column>=model.boardSize) {
@@ -72,11 +74,44 @@ var controller ={
             } else{
                 return row+column;
             }
+        }
         return null
+    },
+    processGuess: function(guess) {
+        var location = this.parseGuess(guess);
+        if (location) {
+            this.guesses++;
+            var hit = model.fire(location);    
+            if (hit && model.shipsSunk===model.numShips) {
+                view.displayMessage("You sank all my battleships, in " + this.guesses+" guesses");
+            }
         }
     }
 };
 
-console.log(controller.parseGuess("A0"))
+
+function init() {
+    var fireButton = document.getElementById("fireButton");
+    fireButton.onclick = handleFireButton;
+    var guessInput =document.getElementById("guessInput")
+    guessInput.onkeypress=handleKeyPress
+}
+function handleFireButton() {
+    var guessInput=document.getElementById("guessInput")
+    var guess = guessInput.value
+    controller.processGuess(guess);
+    guessInput.value="";
+}
+window.onload=init
+
+function handleKeyPress(e) {
+    var fireButton=document.getElementById("fireButton")
+    if (e.keyCode=== 13) {
+        fireButton.click()
+        return false
+        
+    }
+}
+
 
 
