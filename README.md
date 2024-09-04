@@ -1,3 +1,4 @@
+![Дизайн без названия (1)](https://github.com/user-attachments/assets/fe05d623-f10d-49b0-98d5-165eebdf5ef8)
 
 
 [CLICK TO TRY](https://danila-nazarenko.github.io/battleship/)  <br><br><br><br>
