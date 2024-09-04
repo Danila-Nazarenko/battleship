@@ -1,6 +1,6 @@
-# battleship
 
 
+[CLICK TO TRY](https://danila-nazarenko.github.io/battleship/)  <br><br><br><br>
 
 
 
